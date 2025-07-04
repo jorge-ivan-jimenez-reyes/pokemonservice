@@ -43,7 +43,7 @@ cd pokemonservice
 # Levantar los servicios
 docker-compose up --build
 
-# La API estará disponible en http://localhost:8000
+# La API estará disponible en http://localhost:8001
 ```
 
 ### Opción 2: Instalación Local
@@ -62,8 +62,8 @@ uvicorn app.main:app --reload
 ## Endpoints de la API
 
 ### Documentación Interactiva
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
+- **Swagger UI**: http://localhost:8001/docs
+- **ReDoc**: http://localhost:8001/redoc
 
 ### Endpoints Principales
 
@@ -85,7 +85,7 @@ uvicorn app.main:app --reload
 
 ### Crear un Pokémon
 ```bash
-curl -X POST "http://localhost:8000/pokemon/" \
+curl -X POST "http://localhost:8001/pokemon/" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "MiPokemon",
@@ -105,18 +105,18 @@ curl -X POST "http://localhost:8000/pokemon/" \
 
 ### Obtener todos los Pokémon
 ```bash
-curl "http://localhost:8000/pokemon/?skip=0&limit=10"
+curl "http://localhost:8001/pokemon/?skip=0&limit=10"
 ```
 
 ### Buscar por tipo
 ```bash
-curl "http://localhost:8000/pokemon/type/Fire"
+curl "http://localhost:8001/pokemon/type/Fire"
 ```
 
 ### Obtener Pokémon específico
 ```bash
-curl "http://localhost:8000/pokemon/1"
-curl "http://localhost:8000/pokemon/name/Pikachu"
+curl "http://localhost:8001/pokemon/1"
+curl "http://localhost:8001/pokemon/name/Pikachu"
 ```
 
 ## Modelo de Datos
