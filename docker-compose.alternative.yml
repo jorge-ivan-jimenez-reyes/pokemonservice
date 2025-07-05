@@ -8,8 +8,6 @@ services:
       POSTGRES_USER: pokemon_user
       POSTGRES_PASSWORD: pokemon_pass
       POSTGRES_DB: pokemon_db
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./migrations/init_pokemon_data.sql:/docker-entrypoint-initdb.d/init_pokemon_data.sql
@@ -24,8 +22,6 @@ services:
   app:
     build: .
     restart: always
-    ports:
-      - "8001:8000"
     environment:
       DATABASE_URL: postgresql://pokemon_user:pokemon_pass@db:5432/pokemon_db
       POSTGRES_USER: pokemon_user
@@ -43,15 +39,14 @@ services:
     image: nginx:alpine
     restart: always
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"     # Puerto HTTP alternativo
+      - "8443:443"    # Puerto HTTPS alternativo
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/sites-available:/etc/nginx/sites-available
       - ./nginx/sites-enabled:/etc/nginx/sites-enabled
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
-      - /etc/letsencrypt:/etc/letsencrypt:ro
     depends_on:
       - app
     networks:
