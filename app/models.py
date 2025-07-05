@@ -16,4 +16,5 @@ class Pokemon(Base):
     speed = Column(Integer, nullable=False)
     height = Column(Float, nullable=False)  # en metros
     weight = Column(Float, nullable=False)  # en kg
-    description = Column(String, nullable=True) 
+    description = Column(String, nullable=True)
+    image_url = Column(String, nullable=True)  # URL de la imagen del Pokémon 

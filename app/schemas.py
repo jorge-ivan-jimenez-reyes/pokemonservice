@@ -14,6 +14,7 @@ class PokemonBase(BaseModel):
     height: float = Field(..., gt=0, description="Altura en metros", example=0.4)
     weight: float = Field(..., gt=0, description="Peso en kilogramos", example=6.0)
     description: Optional[str] = Field(None, description="Descripción del Pokémon", example="Un ratón eléctrico muy famoso")
+    image_url: Optional[str] = Field(None, description="URL de la imagen del Pokémon", example="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png")
 
 class PokemonCreate(PokemonBase):
     """Esquema para crear un nuevo Pokémon"""
@@ -32,7 +33,8 @@ class PokemonCreate(PokemonBase):
                 "speed": 90,
                 "height": 0.4,
                 "weight": 6.0,
-                "description": "Un ratón eléctrico muy famoso y querido"
+                "description": "Un ratón eléctrico muy famoso y querido",
+                "image_url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
             }
         }
 
@@ -50,6 +52,7 @@ class PokemonUpdate(BaseModel):
     height: Optional[float] = Field(None, gt=0, description="Nueva altura en metros", example=0.8)
     weight: Optional[float] = Field(None, gt=0, description="Nuevo peso en kilogramos", example=30.0)
     description: Optional[str] = Field(None, description="Nueva descripción del Pokémon", example="La evolución de Pikachu")
+    image_url: Optional[str] = Field(None, description="Nueva URL de imagen del Pokémon", example="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png")
 
     class Config:
         schema_extra = {
@@ -58,7 +61,8 @@ class PokemonUpdate(BaseModel):
                 "hp": 60,
                 "attack": 90,
                 "speed": 110,
-                "description": "La evolución de Pikachu con mayor poder eléctrico"
+                "description": "La evolución de Pikachu con mayor poder eléctrico",
+                "image_url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"
             }
         }
 
@@ -82,7 +86,8 @@ class Pokemon(PokemonBase):
                 "speed": 90,
                 "height": 0.4,
                 "weight": 6.0,
-                "description": "Un ratón eléctrico muy famoso y querido"
+                "description": "Un ratón eléctrico muy famoso y querido",
+                "image_url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
             }
         }
 
