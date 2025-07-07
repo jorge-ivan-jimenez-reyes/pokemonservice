@@ -76,7 +76,7 @@ def read_root():
         "docs": "/docs",
         "redoc": "/redoc",
         "endpoints": {
-            "pokemon": "/pokemon/",
+            "pokemon": "/pokemon",
             "search_by_type": "/pokemon/type/{type}",
             "get_by_name": "/pokemon/name/{name}"
         }
