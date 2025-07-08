@@ -10,6 +10,7 @@ server {
 
     # Redirigir todo el tráfico HTTP a HTTPS (después de obtener certificados)
     location / {
+        
         return 301 https://$server_name$request_uri;
     }
 }
@@ -39,11 +40,12 @@ server {
 
     # Configuración del proxy hacia la aplicación FastAPI
     location / {
+            
         proxy_pass http://app:8000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Proto https;
         proxy_set_header X-Forwarded-Host $host;
         proxy_set_header X-Forwarded-Port $server_port;
         
